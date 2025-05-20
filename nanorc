@@ -1,0 +1,11 @@
+set tabsize 4
+set tabstospaces
+set cutfromcursor
+set constantshow
+set linenumbers
+set softwrap
+
+bind ^C copy main
+bind ^V paste all
+bind ^F whereis all
+bind ^S savefile main

@@ -1,0 +1,11 @@
+[user]
+	name = Gabi-Limberea
+	email = gabilimberea@gmail.com
+
+[url "ssh://github.com/"]
+    insteadOf = "https://github.com/"
+
+[includeIf "gitdir:/home/gabi/Documents/Work/"]
+	path = /home/gabi/Documents/Work/.gitconfig_work
+[init]
+	defaultBranch = main
