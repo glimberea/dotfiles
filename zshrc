@@ -118,7 +118,7 @@ unset SSH_ASKPASS
 # aliases
 alias zshconfig="nano ~/.zshrc"
 alias tmuxconfig="nano ~/.tmux.conf"
-alias envconfig="nano ~/Documents/Work/.envrc"
+alias envconfig="nano ~/work/.envrc"
 alias kube="kubectl"
 alias kind-cloud-provider="cloud-provider-kind"
 alias moss="~/Documents/Programming/moss.sh"
