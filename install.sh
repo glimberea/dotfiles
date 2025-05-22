@@ -25,6 +25,7 @@ if [[ "${approve}" =~ "y" ]]; then
     cp ~/.tmux.conf ${backup_dir} || 1
     cp -r ~/.tmux-custom ${backup_dir} || 1
     cp -r ~/.prettierrc ${backup_dir} || 1
+    cp ~/.config/starship.toml ${backup_dir} || 1
 fi
 
 ln -is $(readlink -f bashrc) ~/.bashrc
@@ -34,4 +35,5 @@ ln -is $(readlink -f nanorc) ~/.nanorc
 ln -is $(readlink -f prettierrc) ~/.prettierrc
 ln -is $(readlink -f tmux.conf) ~/.tmux.conf
 ln -is $(readlink -f tmux-custom) ~/tmux-custom
+ln -is $(readlink -f starship.toml) ~/.config/starship.toml
 mv ~/tmux-custom ~/.tmux-custom

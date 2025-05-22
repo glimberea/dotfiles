@@ -5,7 +5,7 @@
 [url "ssh://github.com/"]
     insteadOf = "https://github.com/"
 
-[includeIf "gitdir:/home/gabi/Documents/Work/"]
+[includeIf "gitdir:/home/gabi/work/"]
 	path = /home/gabi/Documents/Work/.gitconfig_work
 [init]
 	defaultBranch = main
