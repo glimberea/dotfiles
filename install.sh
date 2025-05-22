@@ -17,15 +17,16 @@ if [[ "${approve}" =~ "y" ]]; then
         backup_dir=${DEFAULT_BACKUP_DIR}
     fi
 
-    mkdir ${backup_dir}
-    cp ~/.zshrc ${backup_dir} || 1
-    cp ~/.bashrc ${backup_dir} || 1
-    cp ~/.gitconfig ${backup_dir} || 1
-    cp ~/.nanorc ${backup_dir} || 1
-    cp ~/.tmux.conf ${backup_dir} || 1
-    cp -r ~/.tmux-custom ${backup_dir} || 1
-    cp -r ~/.prettierrc ${backup_dir} || 1
-    cp ~/.config/starship.toml ${backup_dir} || 1
+    mkdir -p ${backup_dir}/zsh-scripts
+    cp ~/.zshrc ${backup_dir} || true
+    cp ~/.bashrc ${backup_dir} || true
+    cp ~/.gitconfig ${backup_dir} || true
+    cp ~/.nanorc ${backup_dir} || true
+    cp ~/.tmux.conf ${backup_dir} || true
+    cp -r ~/.tmux-custom ${backup_dir} || true
+    cp ~/.prettierrc ${backup_dir} || true
+    cp ~/.config/starship.toml ${backup_dir} || true
+    cp ~/.oh-my-zsh/custom/*.zsh ${backup_dir}/zsh-scripts || true
 fi
 
 ln -is $(readlink -f bashrc) ~/.bashrc
@@ -37,3 +38,7 @@ ln -is $(readlink -f tmux.conf) ~/.tmux.conf
 ln -is $(readlink -f tmux-custom) ~/tmux-custom
 ln -is $(readlink -f starship.toml) ~/.config/starship.toml
 mv ~/tmux-custom ~/.tmux-custom
+
+for file in $(ls ./zsh-scripts); do
+    ln -is $(readlink -f "zsh-scripts/$file") ~/.oh-my-zsh/custom
+done
