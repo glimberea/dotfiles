@@ -1,4 +1,11 @@
 add_newline = false
+command_timeout = 30000
+
+[kubernetes]
+disabled = false
+symbol = " "
+style = "blue bold"
+format = '[$symbol]($style)[$context( \($namespace\))](white bold) in ' 
 
 [aws]
 symbol = "  "

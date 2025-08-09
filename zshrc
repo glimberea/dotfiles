@@ -157,6 +157,7 @@ complete -o default -F __start_kubectl kube
 source <(helm completion zsh)
 
 eval $(codex autocomplete:script zsh)
+source <(ionosctl completion zsh)
 
 fpath+=($HOME/.config/ionosctl/completion/zsh)
 autoload -Uz compinit; compinit
@@ -164,6 +165,7 @@ autoload -Uz compinit; compinit
 autoload -U +X bashcompinit && bashcompinit
 
 complete -o nospace -C /usr/bin/terraform terraform
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/opentofu/1.10.5/bin/tofu tofu
 
 # Pure Theme
 #fpath+=("$(brew --prefix)/share/zsh/site-functions")
@@ -172,4 +174,3 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Starship Theme
 eval "$(starship init zsh)"
-

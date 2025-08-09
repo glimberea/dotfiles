@@ -117,10 +117,22 @@ if ! shopt -oq posix; then
 fi
 
 # custom bash prompt
-PS1='\[\e[0;1;38;5;50m\]\h\[\e[0m\]@\[\e[0;1;38;5;140m\]\u\[\e[0m\]: \[\e[0m\]\w\[\e[0m\]: \[\e[0m\](\[\e[0;5m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0m\])\n\[\e[0m\]-\[\e[0m\]>\[\e[0m\]'
+PS1='[\[\e[38;5;75m\]\[\e[97;1m\]$(~/.bash-scripts/kube.sh)\[\e[0m\]] \[\e[0;1;38;5;50m\]\h\[\e[0m\]@\[\e[0;1;38;5;140m\]\u\[\e[0m\]: \[\e[0m\]\w\[\e[0m\]: \[\e[0m\](\[\e[0;5m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0m\])\n\[\e[0m\]-\[\e[0m\]>\[\e[0m\]'
 
-export PATH=${PATH}:/home/gabi/sdk/go1.24.3/bin
-export PATH=${PATH}:/home/gabi/go/bin
+envpaths=()
+
+export GOROOT=$HOME/.sdks/go1.24.3
+envpaths+=("$GOROOT/bin")
+
+export GOPATH=$HOME/go
+envpaths+=("$GOPATH/bin")
+
+export JAVA_HOME=$HOME/.jdks/openjdk-24.0.1
+envpaths+=("$JAVA_HOME/bin")
+
+export PATH=$( IFS=":"; echo "${envpaths[*]}" ):$PATH
+export PATH=${KREW_ROOT:-$HOME/.krew}/bin:$PATH
+export PATH=${TEX_PATH:-/usr/local/texlive/2025/bin/x86_64-linux}:$PATH
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -134,4 +146,11 @@ alias kube="kubectl"
 complete -o default -F __start_kubectl kube
 export KUBE_EDITOR=nano
 
+source <(helm completion bash)
+source <(ionosctl completion bash)
+
 unset SSH_ASKPASS
+
+complete -C /home/linuxbrew/.linuxbrew/Cellar/opentofu/1.10.5/bin/tofu tofu
+
+

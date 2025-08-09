@@ -27,6 +27,7 @@ if [[ "${approve}" =~ "y" ]]; then
     cp ~/.prettierrc ${backup_dir} || true
     cp ~/.config/starship.toml ${backup_dir} || true
     cp ~/.oh-my-zsh/custom/*.zsh ${backup_dir}/zsh-scripts || true
+    cp -r ~/.bash-scripts ${backup_dir} || true
 fi
 
 ln -is $(readlink -f bashrc) ~/.bashrc
@@ -36,8 +37,10 @@ ln -is $(readlink -f nanorc) ~/.nanorc
 ln -is $(readlink -f prettierrc) ~/.prettierrc
 ln -is $(readlink -f tmux.conf) ~/.tmux.conf
 ln -is $(readlink -f tmux-custom) ~/tmux-custom
+ln -is $(readlink -f bash-scripts) ~/bash-scripts
 ln -is $(readlink -f starship.toml) ~/.config/starship.toml
 mv ~/tmux-custom ~/.tmux-custom
+mv ~/bash-scripts ~/.bash-scripts
 
 for file in $(ls ./zsh-scripts); do
     ln -is $(readlink -f "zsh-scripts/$file") ~/.oh-my-zsh/custom

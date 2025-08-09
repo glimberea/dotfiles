@@ -6,6 +6,6 @@
     insteadOf = "https://github.com/"
 
 [includeIf "gitdir:/home/gabi/work/"]
-	path = /home/gabi/Documents/Work/.gitconfig_work
+	path = /home/gabi/work/.gitconfig_work
 [init]
 	defaultBranch = main
