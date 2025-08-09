@@ -20,6 +20,5 @@
     "embeddedLanguageFormatting": "auto",
     "vueIndentScriptAndStyle": false,
     "experimentalTernaries": false,
-    "filepath": "/home/gabi/Documents/Programming/Year 4/Sem 1/SCD/hw-3/docker-compose.yml",
     "parser": "yaml"
   }
