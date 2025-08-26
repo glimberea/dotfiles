@@ -3,7 +3,7 @@ case $(tty) in
 	*tty*) exec bash -l;;
 esac
 
-if [[ "$TERMINAL_EMULATOR" != "vscode" ]] && [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]] && [ -z "$TMUX" ] && [[ "$USER" == "gabi" ]]; then
+if [[ "$TERMINAL_EMULATOR" != "vscode" ]] && [[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ]] && [ -z "$TMUX" ] && [[ "$USER" == "glimberea" ]]; then
 	ATTACH_OPT=$(tmux ls 2> /dev/null | grep -vq attached && echo "attach -d")
 	exec eval "tmux $ATTACH_OPT"
 fi
@@ -135,7 +135,7 @@ export NVM_DIR="$HOME/.nvm"
 
 envpaths=()
 
-export GOROOT=$HOME/.sdks/go1.24.3
+export GOROOT=$HOME/.sdks/go1.24.5
 envpaths+=("$GOROOT/bin")
 
 export GOPATH=$HOME/go
@@ -155,6 +155,8 @@ source <(kubectl completion zsh)
 complete -o default -F __start_kubectl kube
 
 source <(helm completion zsh)
+source <(kind completion zsh)
+source <(crossplane completions)
 
 eval $(codex autocomplete:script zsh)
 source <(ionosctl completion zsh)
